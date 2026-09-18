@@ -1,0 +1,7 @@
+{
+  "deviceId": "dev_laptop_001",
+  "deviceName": "My Windows Laptop",
+  "port": 8765,
+  "relayUrl": "ws://localhost:4000/ws",
+  "agentVersion": "0.1.0"
+}

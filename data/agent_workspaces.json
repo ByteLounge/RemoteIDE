@@ -1,0 +1,21 @@
+[
+  {
+    "id": "ws_remoteide_001",
+    "userId": "user_dev_001",
+    "deviceId": "dev_laptop_001",
+    "name": "RemoteIDE",
+    "path": "D:\\Projects\\RemoteIDE",
+    "description": "Main Remote Development Monorepo",
+    "createdAt": "2026-09-18T05:35:20.705Z",
+    "updatedAt": "2026-09-18T05:35:20.705Z"
+  },
+  {
+    "id": "ws_1789709720722_5bab6910e9c541aa",
+    "userId": "user_dev_001",
+    "deviceId": "dev_laptop_001",
+    "name": "TestWorkspace",
+    "path": "D:\\Projects\\RemoteIDE\\temp_test_workspace",
+    "createdAt": "2026-09-18T05:35:20.729Z",
+    "updatedAt": "2026-09-18T05:35:20.729Z"
+  }
+]

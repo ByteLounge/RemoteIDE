@@ -55,8 +55,8 @@ export class GitManager {
         const lines = statusOutput.split('\n');
         for (const line of lines) {
           if (line.length < 4) continue;
-          const stagedCode = line[0] as GitStatusChar;
-          const unstagedCode = line[1] as GitStatusChar;
+          const stagedCode = line[0];
+          const unstagedCode = line[1];
           const filePath = line.substring(3).trim();
 
           const isUntracked = stagedCode === '?' && unstagedCode === '?';
@@ -64,8 +64,8 @@ export class GitManager {
 
           files.push({
             path: filePath,
-            stagedStatus: stagedCode !== ' ' ? stagedCode : undefined,
-            unstagedStatus: unstagedCode !== ' ' ? unstagedCode : undefined,
+            stagedStatus: stagedCode !== ' ' ? (stagedCode as GitStatusChar) : undefined,
+            unstagedStatus: unstagedCode !== ' ' ? (unstagedCode as GitStatusChar) : undefined,
             isStaged,
             isUntracked,
           });

@@ -168,7 +168,7 @@ export interface ProcessLogEntry {
 // Git Types
 // ---------------------------------------------------------------------------
 
-export type GitStatusChar = 'M' | 'A' | 'D' | 'R' | 'C' | 'U' | '?' | '!';
+export type GitStatusChar = 'M' | 'A' | 'D' | 'R' | 'C' | 'U' | '?' | '!' | ' ';
 
 export interface GitFileStatus {
   path: string;
