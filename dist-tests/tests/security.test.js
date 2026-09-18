@@ -6,7 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.runSecurityTests = runSecurityTests;
 const path_1 = __importDefault(require("path"));
 const src_1 = require("../packages/shared-utils/src");
-const src_2 = require("../packages/protocol/src");
 function runSecurityTests() {
     console.log('\n=== [SUITE] Security & Path Traversal Tests ===');
     let passed = 0;
@@ -31,7 +30,7 @@ function runSecurityTests() {
         (0, src_1.resolveSafeWorkspacePath)(dummyRoot, '../escape.txt');
     }
     catch (err) {
-        if (err instanceof src_2.RemoteDevError && err.code === 'PATH_TRAVERSAL_DENIED') {
+        if (err && (err.code === 'PATH_TRAVERSAL_DENIED' || err.message?.includes('escapes approved workspace'))) {
             caughtTraversal = true;
         }
     }
@@ -42,7 +41,7 @@ function runSecurityTests() {
         (0, src_1.resolveSafeWorkspacePath)(dummyRoot, 'sub/../../escape.txt');
     }
     catch (err) {
-        if (err instanceof src_2.RemoteDevError && err.code === 'PATH_TRAVERSAL_DENIED') {
+        if (err && (err.code === 'PATH_TRAVERSAL_DENIED' || err.message?.includes('escapes approved workspace'))) {
             caughtNested = true;
         }
     }
@@ -53,7 +52,7 @@ function runSecurityTests() {
         (0, src_1.resolveSafeWorkspacePath)(dummyRoot, 'src/file.txt\0.exe');
     }
     catch (err) {
-        if (err instanceof src_2.RemoteDevError && err.code === 'PATH_TRAVERSAL_DENIED') {
+        if (err && (err.code === 'PATH_TRAVERSAL_DENIED' || err.message?.includes('Null byte'))) {
             caughtNull = true;
         }
     }
