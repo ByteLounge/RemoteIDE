@@ -1,0 +1,22 @@
+{
+  "name": "remotedev-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Cross-Device Remote Development Workspace",
+  "workspaces": [
+    "packages/*",
+    "services/*",
+    "apps/laptop-agent"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces",
+    "start:backend": "npm run start --workspace=services/backend",
+    "start:agent": "npm run start --workspace=apps/laptop-agent",
+    "dev:backend": "npm run dev --workspace=services/backend",
+    "dev:agent": "npm run dev --workspace=apps/laptop-agent"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
+}

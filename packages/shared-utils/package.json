@@ -1,0 +1,17 @@
+{
+  "name": "@remotedev/shared-utils",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w"
+  },
+  "dependencies": {
+    "@remotedev/types": "^0.1.0",
+    "@remotedev/protocol": "^0.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
+}
