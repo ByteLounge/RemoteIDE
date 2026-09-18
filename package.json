@@ -3,20 +3,29 @@
   "version": "0.1.0",
   "private": true,
   "description": "Cross-Device Remote Development Workspace",
-  "workspaces": [
-    "packages/*",
-    "services/*",
-    "apps/laptop-agent"
-  ],
   "scripts": {
-    "build": "npm run build --workspaces",
-    "test": "npm run test --workspaces",
-    "start:backend": "npm run start --workspace=services/backend",
-    "start:agent": "npm run start --workspace=apps/laptop-agent",
-    "dev:backend": "npm run dev --workspace=services/backend",
-    "dev:agent": "npm run dev --workspace=apps/laptop-agent"
+    "build:types": "tsc -p packages/types/tsconfig.json",
+    "build:protocol": "tsc -p packages/protocol/tsconfig.json",
+    "build:utils": "tsc -p packages/shared-utils/tsconfig.json",
+    "build:sync": "tsc -p packages/sync-engine/tsconfig.json",
+    "build:backend": "tsc -p services/backend/tsconfig.json",
+    "build:agent": "tsc -p apps/laptop-agent/tsconfig.json",
+    "build": "npm run build:types && npm run build:protocol && npm run build:utils && npm run build:sync && npm run build:backend && npm run build:agent",
+    "start:backend": "node services/backend/dist/index.js",
+    "start:agent": "node apps/laptop-agent/dist/index.js",
+    "dev:backend": "npm run build:backend && node services/backend/dist/index.js",
+    "dev:agent": "npm run build:agent && node apps/laptop-agent/dist/index.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "cors": "^2.8.5",
+    "ws": "^8.17.0"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.12.7",
+    "@types/ws": "^8.5.10",
     "typescript": "^5.4.5"
   }
 }
