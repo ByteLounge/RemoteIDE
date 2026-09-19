@@ -341,6 +341,30 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
+    fun pullGit() {
+        val ws = currentWorkspace.value ?: return
+        viewModelScope.launch {
+            try {
+                client.pullGit(ws.id)
+                refreshGit(ws.id)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+
+    fun pushGit() {
+        val ws = currentWorkspace.value ?: return
+        viewModelScope.launch {
+            try {
+                client.pushGit(ws.id)
+                refreshGit(ws.id)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+
     // Processes
     fun refreshProcesses(workspaceId: String) {
         viewModelScope.launch {

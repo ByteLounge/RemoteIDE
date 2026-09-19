@@ -151,6 +151,10 @@ export class AgentServer {
           reply('pong', { time: Date.now() });
           break;
 
+        case 'auth.handshake.response':
+          logger.info('Agent handshake acknowledged by relay server');
+          break;
+
         case 'system.stats':
           reply('system.stats.response', { stats: getSystemStats(this.configManager.getConfig().agentVersion) });
           break;

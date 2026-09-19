@@ -88,12 +88,12 @@ fun GitScreen(viewModel: AppViewModel) {
                             Text("Commit", color = TextPrimary, fontWeight = FontWeight.Bold)
                         }
                         OutlinedButton(
-                            onClick = { ws?.let { viewModel.viewModelScope.launch { viewModel.client.pullGit(it.id); viewModel.refreshGit(it.id) } } }
+                            onClick = { viewModel.pullGit() }
                         ) {
                             Text("Pull", color = PrimaryBlue)
                         }
                         OutlinedButton(
-                            onClick = { ws?.let { viewModel.viewModelScope.launch { viewModel.client.pushGit(it.id); viewModel.refreshGit(it.id) } } }
+                            onClick = { viewModel.pushGit() }
                         ) {
                             Text("Push", color = PrimaryBlue)
                         }

@@ -1,6 +1,8 @@
 # Node / npm
 node_modules/
 dist/
+dist-tests/
+temp_test_workspace/
 build/
 .npm
 npm-debug.log*
